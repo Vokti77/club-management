@@ -9,7 +9,8 @@ urlpatterns = [
     path('', include('base.urls')),
     path('account/', include('account.urls')),
     path('event/', include('event.urls')),
-    
+    path('chat/', include('chat.urls')),
+    path('room/', include('room.urls')),
 ]
 
 if settings.DEBUG:

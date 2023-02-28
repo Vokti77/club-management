@@ -20,8 +20,12 @@
             <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@mydomain.com</a> 
           </div>
           <div class="col-lg-3 text-right">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="small mr-3"><span class="icon-unlock-alt"></span> Logout</a>
+            {% else %}
             <a href="{% url 'login' %}" class="small mr-3"><span class="icon-unlock-alt"></span> Log In</a>
-            <a href="{% url 'register' %}" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
+            <a href="{% url 'sign-up' %}" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
+            {% endif %}
           </div>
         </div>
       </div>
