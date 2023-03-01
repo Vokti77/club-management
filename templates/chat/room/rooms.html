@@ -1,5 +1,7 @@
-{% extends 'base.html' %}
-{%load static%}
+{% extends 'chat/core/base.html' %}
+
+{% block title %}Rooms | {% endblock %}
+
 {% block content %}
 <div class="p-10 lg:p-20 text-center">
     <h1 class="text-3xl lg:text-6xl text-white">Rooms</h1>
@@ -16,13 +18,4 @@
         </div>
     {% endfor %}
 </div>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-        <style>
-            .messages {
-                height: 400px;
-                overflow-y: auto;
-            }
-        </style>
 {% endblock %}

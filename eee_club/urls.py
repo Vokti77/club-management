@@ -9,7 +9,7 @@ urlpatterns = [
     path('', include('base.urls')),
     path('account/', include('account.urls')),
     path('event/', include('event.urls')),
-    path('chat/', include('chat.urls')),
+    path('core/', include('core.urls')),
     path('room/', include('room.urls')),
 ]
 

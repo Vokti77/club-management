@@ -1,6 +1,6 @@
 
 from pathlib import Path
-from django.core.asgi import get_asgi_application
+from telnetlib import LOGOUT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,6 +21,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 'daphne',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,15 +33,18 @@ INSTALLED_APPS = [
     'account',
     'base',
     'event',
-    'chat',
+    'core',
     'room',
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
+    
 
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+ASGI_APPLICATION = 'eee_club.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -69,12 +74,12 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'eee_club.wsgi.application'
-ASGI_APPLICATION = 'eee_club.asgi.application'
+# WSGI_APPLICATION = 'eee_club.wsgi.application'
+
 
 CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
     }
 }
 
