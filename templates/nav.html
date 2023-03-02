@@ -11,30 +11,54 @@
         <div class="mr-auto">
           <nav class="site-navigation position-relative text-right" role="navigation">
             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-              <li class="active">
+              <li {% if "/" == request.path %}
+                class="nav-item active mr-3"
+                {% else %}
+                  class="nav-item mr-3"
+               {% endif %}
+          >
                 <a href="{% url 'index' %}" class="nav-link text-left">Home</a>
               </li>
-              <li>
+              <li {% if "about/" in request.path %}
+                class="nav-item active mr-3"
+                {% else %}
+                  class="nav-item mr-3"
+               {% endif %}
+          >
                 <a href="{% url 'about' %}" class="nav-link text-left">About Us</a>
               </li>
-              <!-- <li class="has-children">
-                <a href="about.html" class="nav-link text-left">About Us</a>
-                <ul class="dropdown">
-                  <li><a href="teachers.html">Our Teachers</a></li>
-                  <li><a href="about.html">Our School</a></li>
-                </ul>
-              </li> -->
-              <li>
-                <a href="admissions.html" class="nav-link text-left">Question & Solve</a>
+              <li {% if "questions-solves/" in request.path %}
+                class="nav-item active mr-3"
+                {% else %}
+                  class="nav-item mr-3"
+               {% endif %}
+          >
+          <a href="{% url 'questions-solves' %}" class="nav-link text-left">Question & Solve</a>
               </li>
-              <li>
+
+              <li {% if "event/" in request.path %}
+                class="nav-item active mr-3"
+                {% else %}
+                  class="nav-item mr-3"
+               {% endif %}
+          >
                 <a href="{% url 'event' %}" class="nav-link text-left">Events</a>
               </li>
-              <li>
+              <li {% if "contact/" in request.path %}
+                class="nav-item active mr-3"
+                {% else %}
+                  class="nav-item mr-3"
+               {% endif %}
+          >
                   <a href="{% url 'contact' %}" class="nav-link text-left">Contact</a>
                 </li>
                 {% if request.user.is_authenticated %}
-              <li>
+                <li {% if "rooms/" in request.path %}
+                class="nav-item active mr-3"
+                {% else %}
+                  class="nav-item mr-3"
+               {% endif %}
+          >
                   <a href="{% url 'rooms' %}" class="nav-link text-left">Chat</a>
                 </li>
                 {% endif %}

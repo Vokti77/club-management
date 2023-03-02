@@ -1,0 +1,14 @@
+{% extends 'dashboard/bs.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Update Profile
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <form method="post" novalidate enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form | crispy}}
+            <button type="submit" class="btn btn-outline-dark mt-3">Save changes</button>
+        </form>
+    </div>
+{% endblock %}

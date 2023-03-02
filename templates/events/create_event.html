@@ -1,0 +1,15 @@
+{% extends 'dashboard/bs.html' %}
+{% load crispy_forms_tags%}
+{% block title %}
+    Create Event
+{% endblock %}
+{% block content %}
+    <form method="post" novalidate style="margin-top: 50px" enctype="multipart/form-data">
+        {% csrf_token %}
+       {{ form| crispy }}
+        <br><br>
+        
+        <input class="btn btn-success" type="submit" value="Create">
+    <input class="btn btn-outline-dark btn-block" type="reset" value="Reset">
+    </form>
+{% endblock %}

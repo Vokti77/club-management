@@ -1,0 +1,127 @@
+p{% extends 'dashboard/bs.html' %}
+{% load static %}
+{% block title %}
+    {{ request.user.username }}
+{% endblock %}
+{% block content %}
+    <br>
+    <div id="container">
+        <div class="card text-center">
+            <div class="card-header">
+                <h3>User Account</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th scope="row">Username</th>
+                        <td> {{ request.user.username }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">First Name</th>
+                        <td>{{ request.user.first_name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Last Name</th>
+                        <td>{{ request.user.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td>{{ request.user.email }}</td>
+                    </tr>
+                    <tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <div class="card text-center">
+            <div class="card-header">
+{#                <h3>Donor Account</h3>#}
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    {% if request.user.donorprofile.id %}
+                        <tr>
+                            <th>Profile Picture</th>
+                            <td>
+                                {% if request.user.donorprofile.id %}
+                                    <img src="{{ request.user.donorprofile.image.url }}" alt="user-image" width="100px">
+                                {% else %}
+                                    <img src="{% static 'assets\images\person-dummy.jpg' %}" width="100px">
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Actions</th>
+                            <td>
+                                <a href=" {% url 'update_donor_profile' request.user.donorprofile.id %}"
+                                   class="btn btn-outline-dark">Update Account</a>
+                                <a href="{% url 'event' %}" class="btn-outline-dark btn">Events</a>
+                                <!-- <a href="{% url 'my-donations' %}" class="btn-outline-dark btn">My Donations</a> -->
+                            </td>
+                        </tr>
+                    {% else %}
+{#                        <a href="{% url 'donor_profile' %}" class="btn btn-outline-dark">Become A Donor</a>#}
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <div class="card text-center">
+            <div class="card-header">
+                <h3>Employee Account</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    {% if request.user.employeeprofile.id %}
+                        <tr>
+                            <th>Profile Picture</th>
+                            <td>
+                                {% if request.user.employeeprofile.id %}
+                                    <img src="{{ request.user.employeeprofile.image.url }}" alt="user-image"
+                                         width="100px">
+                                {% else %}
+                                    <img src="{% static 'assets\images\person-dummy.jpg' %}" width="100px">
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>CV</th>
+                            <td>
+                                {% if request.user.employeeprofile.id %}
+                                    <a href="{{ request.user.employeeprofile.cv.url }}" download
+                                       class="btn btn-outline-dark">Download CV</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>{% if  request.user.employeeprofile.status == "2" %}
+                                <p>Pending</p>
+                            {% else %}
+                                <p>Approved</p>
+                            {% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Actions</th>
+                            <td>
+                                <a href="{% url 'update_employee_profile' request.user.employeeprofile.id %}"
+                                   class="btn btn-outline-dark">Update Account</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <a href="{% url 'employee_profile' %}" class="btn btn-outline-dark">Become An
+                            Employee</a>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,15 @@
+{% extends 'dashboard/bs.html' %}
+
+{% load crispy_forms_tags %}
+{% block title %}
+    Distribute - {{ event.title }}
+{% endblock %}
+{% block content %}
+{{remaining}}
+    <form method="post" novalidate style="margin-top: 50px">
+        {% csrf_token %}
+       {{ form | crispy }}
+          <br><br>
+        <input class="btn btn-outline-dark btn-block" type="submit" value="Submit">
+    </form>
+{% endblock %}

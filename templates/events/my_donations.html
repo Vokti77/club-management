@@ -1,0 +1,35 @@
+{% extends 'dashboard/bs.html' %}
+{% block title %}
+    My Donations
+{% endblock %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <h1>All Donations:</h1>
+        {% for donate in donates %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ donate.doner }}</td>
+                <td>{{ donate.amount }}</td>
+                <td>{{ donate.date_donated }}</td>
+                <td>{{ donate.isapproved }}
+{#                    {% if not donate.isapproved %}#}
+{#                        Pending#}
+{#                    {% else %}#}
+{#                        Approved#}
+{#                    {% endif %}#}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'dashboard/bs.html' %}
+{% block title %}
+    All Donations
+{% endblock %}
+{% block content %}
+    <h1>All Donations:</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Donate Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for donate in donates %}
+            {% if donate.isapproved == 'yes' %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ donate.doner }}</td>
+                    <td>{{ donate.doner.email }}</td>
+                    <td>{{ donate.amount }}</td>
+                    <td>{{ donate.date_donated }}</td>
+                    <td>Approved</td>
+                    <td><a href="{% url 'update-donation' donate.id %}" class="btn btn-outline-dark">Update</a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    <br><br>
+    <h1>Pending Donations:</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Donate Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for donate in donates %}
+            {% if donate.isapproved == 'no'%}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ donate.doner }}</td>
+                    <td>{{ donate.amount }}</td>
+                    <td>{{ donate.date_donated }}</td>
+                    <td>Pending</td>
+                    <td><a href="{% url 'update-donation' donate.id %}" class="btn btn-outline-dark">Update</a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}

@@ -15,7 +15,7 @@
 
   <div class="custom-breadcrumns border-bottom">
   <div class="container">
-    <a href="#">Home</a>
+    <a href="{% url 'index' %}">Home</a>
     <span class="mx-3 icon-keyboard_arrow_right"></span>
     <span class="current">About Us</span>
   </div>
@@ -23,16 +23,16 @@
 
   <div class="container pt-5 mb-5">
         <div class="row">
-          <div class="col-lg-4">
+          <div class="">
             <h2 class="section-title-underline">
               <span>About The Club</span>
             </h2>
-          </div>
-          <div class="col-lg-4">
             <p>An EEE (Electrical and Electronics Engineering) students club is a student-run organization dedicated to providing opportunities for students interested in the field of electrical and electronics engineering. The club's main mission is to promote and support academic excellence, leadership, and professional development in the field of electrical and electronics engineering.</p>
 
             <p>The club may organize events such as technical workshops, guest lectures, project exhibitions, and competitions to enhance students' knowledge and skills in the field. They may also provide opportunities for students to network with industry professionals and gain real-world experience through internships and other programs.</p>
+
           </div>
+          
         </div>
       </div>
 
@@ -40,7 +40,7 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-lg-6 mb-lg-0 mb-4">
-                <img src="images/course_4.jpg" alt="Image" class="img-fluid"> 
+                <img src="{% static 'images/mission.png' %}" alt="Image" class="img-fluid"> 
             </div>
             <div class="col-lg-5 ml-auto align-self-center">
                 <h2 class="section-title-underline mb-5">
@@ -53,7 +53,7 @@
 
         <div class="row">
                 <div class="col-lg-6 order-1 order-lg-2 mb-4 mb-lg-0">
-                    <img src="images/course_5.jpg" alt="Image" class="img-fluid"> 
+                    <img src="{% static 'images/vission.png' %}" alt="Image" class="img-fluid" > 
                 </div>
                 <div class="col-lg-5 mr-auto align-self-center order-2 order-lg-1">
                     <h2 class="section-title-underline mb-5">
@@ -72,19 +72,17 @@
         <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
           <span class="icon flaticon-mortarboard"></span>
           <h3>Our Philosphy</h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea? Dolore, amet reprehenderit.</p>
+          <p>Our philosophy is based on the belief that building and engineering can be a force for positive change in the world, and that by working together with a shared sense of purpose and values, we can achieve great things.</p>
         </div>
         <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
           <span class="icon flaticon-school-material"></span>
           <h3>Academics Principle</h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
-            Dolore, amet reprehenderit.</p>
+          <p>Focus on academic excellence | Integration of theory and practice | Continuous learning | Ethical considerations | Respect for intellectual property.</p>
         </div>
         <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
           <span class="icon flaticon-library"></span>
           <h3>Key of Success</h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
-            Dolore, amet reprehenderit.</p>
+          <p>Active Membership | Clear Goals & Objectives | Strong Leadership | Resource Mobilization | Collaboration & Networking | Recognition & Celebration</p>
         </div>
       </div>
     </div>

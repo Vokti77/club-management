@@ -1,0 +1,100 @@
+{% extends 'dashboard/bs.html' %}
+{% load static %}
+{% block title %}
+    {{ username }}
+{% endblock %}
+{% block content %}
+    <div id="container">
+        <p>{{ user.firstname }}</p>
+        <div class="card text-center">
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th scope="row">Username</th>
+                        <td> {{ user.username }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">First Name</th>
+                        <td>{{ user.first_name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Last Name</th>
+                        <td>{{ user.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td><a href="mailto:{{ user.email }}" class="btn btn-outline-dark">{{ user.email }}</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Donor</th>
+                        <td>
+                            {% if user.donorprofile.id %}
+                                Yes
+                            {% else %}
+                                No
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% if user.donorprofile.id %}
+                    <tr>
+                        <th scope="row">Image As a Donor</th>
+                        <th>{% if user.donorprofile.image %}
+                            <img src="{{ user.donorprofile.image.url }}" alt="user-image" width="100px">
+                        {% else %}
+                            <img src="{% static 'assets\images\person-dummy.jpg' %}" width="100px">
+                        {% endif %}</th>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <th scope="row">Employee</th>
+                        <td>
+                            {% if user.employeeprofile.status == "2" %}
+                                <a href="{% url 'update_employee' user.employeeprofile.id %}" class="btn btn-outline-dark">Pending</a>
+                            {% else %}
+                                <a href="{% url 'update_employee' user.employeeprofile.id %}" class="btn btn-outline-dark">Approved</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% if user.employeeprofile.id %}
+                        <tr>
+                            <th scope="row">Employee CV</th>
+                            <td><a href="{{ user.employeeprofile.cv.url }}" class="btn btn-outline-dark" Download>Download
+                                CV</a></td>
+                        </tr>
+                        <tr>
+                        <th scope="row">Image As an Employee</th>
+                        <th>{% if user.employeeprofile.image %}
+                            <img src="{{ user.employeeprofile.image.url }}" alt="user-image" width="100px">
+                        {% else %}
+                            <img src="{% static 'assets\images\person-dummy.jpg' %}" width="100px">
+                        {% endif %}</th>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <th scope="row">Role</th>
+                        <td>{% if user.profile.role == "1" %}
+                            Admin
+                        {% elif user.profile.role == "2" %}
+                            Employee
+                        {% else %}
+                            Doner
+                        {% endif %}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer ">
+                {% if request.user.is_superuser %}
+                    <a href="{% url 'update_employee' user.employeeprofile.id %}" class="btn btn-outline-dark">Update
+                        User</a>
+                {% else %}
+                    <a href="{% url 'profile' %}" class="btn btn-outline-dark">Update Profile</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

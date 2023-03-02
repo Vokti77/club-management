@@ -1,0 +1,9 @@
+{% extends 'dashboard/bs.html' %}
+{% load static %}
+{% block title %}
+    {{ request.user.username }}
+{% endblock %}
+{% block content %}
+    <h1>{{ request.user.username }}</h1>
+    <hr>
+    {% endblock %}

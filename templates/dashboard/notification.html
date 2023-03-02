@@ -1,0 +1,30 @@
+{% extends 'dashboard/bs.html' %}
+{% load static %}
+{% block title %}
+    All Doners
+{% endblock %}
+{% block content %}
+    <h3>Current Notifications</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+                {% for user in users %}
+                {% if user.employeeprofile.status == '2' %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ user.user.username }}</td>
+                    <td>{{ user.user.email }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}

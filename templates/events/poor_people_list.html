@@ -1,0 +1,34 @@
+{% extends 'dashboard/bs.html' %}
+{% block title %}
+    All Donations
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h1>Poor People List</h1>
+        </div>
+        <div class="col">
+            <a href="{% url 'add_poor_people' %}" class="btn btn-outline-dark btn-block">Add Poor People</a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for people in peoples %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ people.name }}</td>
+                <td><a class="btn btn-outline-dark" href="{% url 'detail-people' people.id %}">Details</a>
+                    <a class="btn btn-outline-dark" href="{% url 'make-distribution' people.id %}">Distribute Asset</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

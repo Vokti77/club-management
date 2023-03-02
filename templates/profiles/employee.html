@@ -1,0 +1,73 @@
+{% extends 'dashboard/bs.html' %}
+{% load static %}
+{% block title %}
+    {{ user.username }}
+{% endblock %}
+{% block content %}
+    <div id="container">
+        <div class="card text-center">
+            <div class="card-header">
+                {% if request.user.profile.image %}
+                    <img src="{{ request.user.profile.image.url }}" alt="user-image" width="100px">
+                {% else %}
+                    <img src="{% static 'assets\images\person-dummy.jpg' %}" width="100px">
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th scope="row">Username</th>
+                        <td> {{ request.user.username }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Status</th>
+                        <td>{% if request.user.profile.status == '1' %}
+                    Approved
+                {% else %}
+                    Pending
+                    <p class="text-danger">Add All Informations To Be Verifed</p>
+                {% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">First Name</th>
+                        <td>{{ request.user.first_name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Last Name</th>
+                        <td>{{ request.user.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td>{{ request.user.email }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">NID</th>
+                        <td> {{ request.user.profile.nid }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Occupation</th>
+                        <td>{{ request.user.profile.occupation }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Role</th>
+                        <td>{% if request.user.profile.role == "1" %}
+                            Admin
+                        {% elif request.user.profile.role == "2" %}
+                            Donor
+                        {% else %}
+                            Employee
+                        {% endif %}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer ">
+                <a href="{% url 'profile' %}" class="btn btn-outline-dark">Update Profile</a>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

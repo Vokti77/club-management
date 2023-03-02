@@ -1,0 +1,48 @@
+{% extends 'dashboard/bs.html' %}
+{% load static %}
+{% block title %}
+    {{ item.person.id}}
+{% endblock %}
+{% block content %}
+    <div id="container">
+        <div class="row">
+            <div class="col">
+                <h1>Details:</h1>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <tbody>
+             <tr>
+                <th scope="row">Volunteer</th>
+                <td> {{ item.user.username }}</td>
+            </tr>
+             <tr>
+                <th scope="row">Event Name</th>
+                <td> {{ item.event.title }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Name</th>
+                <td> {{ item.person.name }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Address</th>
+                <td>{{  item.person.address }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Amount</th>
+                <td>{{ item.amount }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Item</th>
+                <td>{{item.Item}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Date Donated</th>
+                <td>{{  item.donate_date }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'dashboard/bs.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Delete - {{ event.title }}
+{% endblock %}
+{% block content %}
+    <form method="post" novalidate style="margin-top: 50px">
+        {% csrf_token %}
+       {{ form | crispy }}
+        <a href="{% url 'event' %}" class="btn btn-outline-dark btn-block">Go Back</a>
+        <input class="btn btn-outline-dark btn-block" type="submit" value="Delete">
+    </form>
+{% endblock %}

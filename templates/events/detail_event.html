@@ -1,0 +1,64 @@
+{% extends 'dashboard/bs.html' %}
+{% load static %}
+{% block title %}
+    {{ events.title }}
+{% endblock %}
+{% block content %}
+    <div id="container">
+        <div class="card text-center">
+            <div class="card-header">
+                <img src="{{ event.cover.url }}" alt="" width="400px">
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th scope="row">Event</th>
+                        <td> {{ event.title }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Detail</th>
+                        <td>{{ event.detail }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Place</th>
+                        <td>{{ event.place }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Target Amount</th>
+                        <td>{{ event.total }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Gained Amount</th>
+                        <td>{{ event.gained }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Deadline</th>
+                        <td>{{ event.deadline }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer ">
+                {% if request.user.is_superuser %}
+                    <td>
+<a href="{% url 'update-event' event.id %}" class="btn btn-outline-dark">
+                            Update
+                        </a>
+                        <a href="{% url 'delete-event' event.id %}" class="btn btn-outline-dark">
+                            Delete
+                        </a>
+                    </td>
+                {% else %}
+                    <td>
+                        <a href="{% url 'donate' event.id %}" class="btn btn-outline-dark">
+                            Donate
+                        </a>
+                    </td>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

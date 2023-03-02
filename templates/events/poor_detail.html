@@ -1,0 +1,30 @@
+{% extends 'dashboard/bs.html' %}
+{% load static %}
+{% block title %}
+    {{ people.name }}
+{% endblock %}
+{% block content %}
+    <div id="container">
+        <div class="row">
+            <div class="col">
+                <h1>Details:</h1>
+            </div>
+            <div class="col">
+                <a href="{% url 'delete_poor_people' people.id %}" class="btn btn-outline-dark">Delete {{ people.name }}</a>
+                <a href="{% url 'update-people' people.id %}" class="btn btn-outline-dark btn-block">Update</a>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <th scope="row">Name</th>
+                <td> {{ people.name }} {{ people.id.amount }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Address</th>
+                <td>{{ people.address }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

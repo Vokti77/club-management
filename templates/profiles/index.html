@@ -1,0 +1,35 @@
+{% extends 'dashboard/bs.html' %}
+{% load static %}
+{% block title %}
+    Home Page
+{% endblock %}
+{% block content %}
+{% for event in events %}
+                    <div class="d-flex flex-wrap">
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <a href="{% url 'dashboard' %}" class="cause-title-wrap">
+                                <p class="title">Running Event</p>
+                                <h4 class="cause-title">{{ event.title }}
+                                </h4>
+                                <p class="counter-inherit">
+                                    ${{ event.total }} Donated of ${{ amount }}
+                                </p>
+                            </a>
+                            <div class="barWrapper my-4">
+                                <div class="progress-box">
+                                    <div class="progress" data-value="60">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="60"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100" style="width: 60%;">
+                                            <div class="value-holder"><span class="value"></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{% url 'dashboard' %}"><img src="{{ event.cover.url }}" class="img-thumbnail"
+                                                  alt=""></a>
+                        </div>
+                    </div>
+    <br><br>
+                {% endfor %}
+{% endblock %}
