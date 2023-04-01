@@ -16,10 +16,9 @@ def event(request):
     event = Event.objects.all()
     amount = list(Donate.objects.filter(isapproved='yes').aggregate(Sum('amount')).values())[0]
     context = {
-        'events': event,
+        'event': event,
         'amount': amount
     }
-    print(event)
     return render(request, 'events/events.html', context)
 
 
@@ -33,7 +32,7 @@ def donation(request, pk):
             donate.event = Event.objects.get(pk=pk)
             donate.save()
             messages.info(request, "Successfully form submitted")
-            return redirect("events")
+            return redirect("event")
     return render(request, 'events/donate.html', {'form': form})
 
 
@@ -70,9 +69,9 @@ class CreateEvent(CreateView):
 
 
 def detail_event(request, id):
-    amount = list(Donate.objects.filter(isapproved='yes', event_id=id).aggregate(Sum('amount')).values())[0]
+    amount = Donate.objects.filter(isapproved='yes', event_id=id).aggregate(Sum('amount'))['amount__sum'] or 0
     event = Event.objects.get(id=id)
-    event.gained=amount
+    event.gained = amount
     event.save()
     context = {
         'event': event

@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import DonorProfile, EmployeeProfile
 
-# Register your models here.
+admin.site.register(DonorProfile)
+admin.site.register(EmployeeProfile)

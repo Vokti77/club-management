@@ -1,12 +1,12 @@
 {% extends 'dashboard/bs.html' %}
 {% block title %}
-    Events
+    event
 {% endblock %}
 {% block content %}
 
 <div class="row">
     <div class="col">
-        <h1>Running Events</h1>
+        <h1>Running event</h1>
     </div>
         <div class="col">
             {% if request.user.is_superuser %}
@@ -26,7 +26,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for event in events %}
+        {% for event in event %}
             {% if event.ready_to_distribute == 'no' %}
             <tr>
                 <th scope="row">{{ forloop.counter }}</th>
@@ -74,7 +74,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for event in events %}
+        {% for event in event %}
             {% if event.ready_to_distribute == 'yes' %}
             <tr>
                 <th scope="row">{{ forloop.counter }}</th>

@@ -320,7 +320,7 @@ h1, h2, h3, h4, h5,
             height: 0;
             width: 0;
             position: absolute;
-            pointer-events: none; }
+            pointer-event: none; }
           .site-navbar .site-navigation .site-menu .has-children .dropdown.arrow-top:before {
             border-color: rgba(136, 183, 213, 0);
             border-bottom-color: #fff;

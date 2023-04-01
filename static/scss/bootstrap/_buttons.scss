@@ -51,7 +51,7 @@
 // Future-proof disabling of clicks on `<a>` elements
 a.btn.disabled,
 fieldset:disabled a.btn {
-  pointer-events: none;
+  pointer-event: none;
 }
 
 
@@ -99,7 +99,7 @@ fieldset:disabled a.btn {
   &:disabled,
   &.disabled {
     color: $btn-link-disabled-color;
-    pointer-events: none;
+    pointer-event: none;
   }
 
   // No need for an active state here

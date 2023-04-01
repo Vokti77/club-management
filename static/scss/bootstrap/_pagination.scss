@@ -56,7 +56,7 @@
 
   &.disabled .page-link {
     color: $pagination-disabled-color;
-    pointer-events: none;
+    pointer-event: none;
     // Opinionated: remove the "hand" cursor set previously for .page-link
     cursor: auto;
     background-color: $pagination-disabled-bg;

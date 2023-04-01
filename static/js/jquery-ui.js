@@ -42,13 +42,13 @@ var widgetSlice = Array.prototype.slice;
 
 $.cleanData = ( function( orig ) {
 	return function( elems ) {
-		var events, elem, i;
+		var event, elem, i;
 		for ( i = 0; ( elem = elems[ i ] ) != null; i++ ) {
 			try {
 
 				// Only trigger remove when necessary to save time
-				events = $._data( elem, "events" );
-				if ( events && events.remove ) {
+				event = $._data( elem, "event" );
+				if ( event && event.remove ) {
 					$( elem ).triggerHandler( "remove" );
 				}
 
@@ -375,7 +375,7 @@ $.Widget.prototype = {
 			.off( this.eventNamespace )
 			.removeAttr( "aria-disabled" );
 
-		// Clean up events and states
+		// Clean up event and states
 		this.bindings.off( this.eventNamespace );
 	},
 
@@ -906,7 +906,7 @@ var widgetsMouse = $.widget( "ui.mouse", {
 	_mouseMove: function( event ) {
 
 		// Only check for mouseups outside the document if you've moved inside the document
-		// at least once. This prevents the firing of mouseup in the case of IE<9, which will
+		// at least once. This prevent the firing of mouseup in the case of IE<9, which will
 		// fire a mousemove event if content is placed under the cursor. See #7778
 		// Support: IE <9
 		if ( this._mouseMoved ) {
@@ -1068,7 +1068,7 @@ var widgetsSlider = $.widget( "ui.slider", $.ui.mouse, {
 	_refresh: function() {
 		this._createRange();
 		this._createHandles();
-		this._setupEvents();
+		this._setupevent();
 		this._refreshValue();
 	},
 
@@ -1142,9 +1142,9 @@ var widgetsSlider = $.widget( "ui.slider", $.ui.mouse, {
 		}
 	},
 
-	_setupEvents: function() {
+	_setupevent: function() {
 		this._off( this.handles );
-		this._on( this.handles, this._handleEvents );
+		this._on( this.handles, this._handleevent );
 		this._hoverable( this.handles );
 		this._focusable( this.handles );
 	},
@@ -1649,7 +1649,7 @@ var widgetsSlider = $.widget( "ui.slider", $.ui.mouse, {
 		}
 	},
 
-	_handleEvents: {
+	_handleevent: {
 		keydown: function( event ) {
 			var allowed, curVal, newVal, step,
 				index = $( event.target ).data( "ui-slider-handle-index" );

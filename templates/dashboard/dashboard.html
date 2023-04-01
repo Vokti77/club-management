@@ -1,4 +1,4 @@
-p{% extends 'dashboard/bs.html' %}
+{% extends 'dashboard/bs.html' %}
 {% load static %}
 {% block title %}
     {{ request.user.username }}
@@ -58,8 +58,8 @@ p{% extends 'dashboard/bs.html' %}
                             <td>
                                 <a href=" {% url 'update_donor_profile' request.user.donorprofile.id %}"
                                    class="btn btn-outline-dark">Update Account</a>
-                                <a href="{% url 'event' %}" class="btn-outline-dark btn">Events</a>
-                                <!-- <a href="{% url 'my-donations' %}" class="btn-outline-dark btn">My Donations</a> -->
+                                <a href="{% url 'event' %}" class="btn-outline-dark btn">event</a>
+                                <a href="{% url 'my-donations' %}" class="btn-outline-dark btn">My Donations</a>
                             </td>
                         </tr>
                     {% else %}
@@ -72,7 +72,7 @@ p{% extends 'dashboard/bs.html' %}
         <br>
         <div class="card text-center">
             <div class="card-header">
-                <h3>Employee Account</h3>
+                <h3>Club Membership Account</h3>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
@@ -114,8 +114,8 @@ p{% extends 'dashboard/bs.html' %}
                             </td>
                         </tr>
                     {% else %}
-                        <a href="{% url 'employee_profile' %}" class="btn btn-outline-dark">Become An
-                            Employee</a>
+                        <a href="{% url 'employee_profile' %}" class="btn btn-outline-dark">Become
+                            Membership</a>
                     {% endif %}
                     </tbody>
                 </table>

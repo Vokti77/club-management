@@ -1,10 +1,11 @@
 from django.urls import path
+
 from . import views
 from .views import UpdateEvent, DeleteEvent, CreateEvent, AllDonations, UpdateDonation, PeopleList, \
     AddPeople, UpdatePeople, DeletePeople, DetailPeople, DistributionList, distribute, DistributionDetail, detail_event
-urlpatterns = [ 
 
-    path('event/', views.event, name='event'),
+urlpatterns = [
+    path('', views.event, name="event"),
     path('donate/<pk>', views.donation, name="donate"),
     path('my-donations/', views.my_donations, name="my-donations"),
     path('all-donations/', AllDonations.as_view(), name="all-donations"),
@@ -24,5 +25,4 @@ urlpatterns = [
     path('distribution-list/', DistributionList.as_view(), name="distribution-list"),
     path('distribution-details/<pk>', DistributionDetail.as_view(), name="distribution-detail"),
     path('invite-doner/', views.contact_form, name="invite-doner"),
-   
 ]

@@ -3,8 +3,7 @@
         {% if request.user.is_superuser %}
          {% include 'dashboard/offcanvas.html' %}
         {% endif %}
-       
-        <a class="navbar-brand" href="">EEE Club</a>
+        <a class="navbar-brand" href="{% url 'dashboard' %}">EEE CLub</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -13,13 +12,13 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 {% if  request.user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'event' %}">Events</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'event' %}">event</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'all-donations' %}">All Donations</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">Active Users</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'active-users' %}">Active Users</a>
                     </li>
 
                 {% endif %}
@@ -32,7 +31,7 @@
                     </li>
                     {% endif %}
             </ul>
-            <a class="btn btn-outline-dark" href="{% url 'index' %}" id="nav-link">Home</a>
+            <a class="btn btn-outline-dark" href="{% url 'logout' %}" id="nav-link">Logout</a>
         </div>
 
     </div>

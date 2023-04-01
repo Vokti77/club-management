@@ -44,7 +44,6 @@ class Donate(models.Model):
 
 class Person(models.Model):
     name = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='person_image/')
     address = models.CharField(max_length=150)
 
     def __str__(self):
