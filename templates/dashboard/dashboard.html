@@ -77,12 +77,12 @@
             <div class="card-body">
                 <table class="table table-bordered">
                     <tbody>
-                    {% if request.user.employeeprofile.id %}
+                    {% if request.user.Memberprofile.id %}
                         <tr>
                             <th>Profile Picture</th>
                             <td>
-                                {% if request.user.employeeprofile.id %}
-                                    <img src="{{ request.user.employeeprofile.image.url }}" alt="user-image"
+                                {% if request.user.Memberprofile.id %}
+                                    <img src="{{ request.user.Memberprofile.image.url }}" alt="user-image"
                                          width="100px">
                                 {% else %}
                                     <img src="{% static 'assets\images\person-dummy.jpg' %}" width="100px">
@@ -92,15 +92,15 @@
                         <tr>
                             <th>CV</th>
                             <td>
-                                {% if request.user.employeeprofile.id %}
-                                    <a href="{{ request.user.employeeprofile.cv.url }}" download
+                                {% if request.user.Memberprofile.id %}
+                                    <a href="{{ request.user.Memberprofile.cv.url }}" download
                                        class="btn btn-outline-dark">Download CV</a>
                                 {% endif %}
                             </td>
                         </tr>
                         <tr>
                             <th>Status</th>
-                            <td>{% if  request.user.employeeprofile.status == "2" %}
+                            <td>{% if  request.user.Memberprofile.status == "2" %}
                                 <p>Pending</p>
                             {% else %}
                                 <p>Approved</p>
@@ -109,12 +109,12 @@
                         <tr>
                             <th scope="row">Actions</th>
                             <td>
-                                <a href="{% url 'update_employee_profile' request.user.employeeprofile.id %}"
+                                <a href="{% url 'update_Member_profile' request.user.Memberprofile.id %}"
                                    class="btn btn-outline-dark">Update Account</a>
                             </td>
                         </tr>
                     {% else %}
-                        <a href="{% url 'employee_profile' %}" class="btn btn-outline-dark">Become
+                        <a href="{% url 'Member_profile' %}" class="btn btn-outline-dark">Become
                             Membership</a>
                     {% endif %}
                     </tbody>

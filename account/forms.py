@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import DonorProfile, EmployeeProfile
+from .models import DonorProfile, MemberProfile
 
 
 class UserForm(forms.ModelForm):
@@ -22,13 +22,13 @@ class DonorProfileForm(forms.ModelForm):
         exclude = ['user',]
 
 
-class EmployeeProfileForm(forms.ModelForm):
+class MemberProfileForm(forms.ModelForm):
     class Meta:
-        model = EmployeeProfile
+        model = MemberProfile
         exclude = ['user', 'status']
 
 
-class EmployeeApprovalForm(forms.ModelForm):
+class MemberApprovalForm(forms.ModelForm):
     class Meta:
-        model = EmployeeProfile
+        model = MemberProfile
         fields = ['status']

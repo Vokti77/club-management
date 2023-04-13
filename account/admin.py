@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import DonorProfile, EmployeeProfile
+from .models import DonorProfile, MemberProfile
 
 admin.site.register(DonorProfile)
-admin.site.register(EmployeeProfile)
+admin.site.register(MemberProfile)

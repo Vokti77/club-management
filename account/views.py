@@ -4,8 +4,8 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import UpdateView, DetailView, ListView, CreateView
-from .forms import SignUpForm, DonorProfileForm, EmployeeProfileForm
-from .models import EmployeeProfile, DonorProfile
+from .forms import SignUpForm, DonorProfileForm, MemberProfileForm
+from .models import MemberProfile, DonorProfile
 
 
 def signup(request):
@@ -31,12 +31,12 @@ def dashboard(request):
     return render(request, 'dashboard/dashboard.html')
 
 
-class EmployeeProfileView(CreateView):
-    form_class = EmployeeProfileForm
+class MemberProfileView(CreateView):
+    form_class = MemberProfileForm
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(EmployeeProfileView, self).dispatch(*args, **kwargs)
+        return super(MemberProfileView, self).dispatch(*args, **kwargs)
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -84,16 +84,16 @@ class UserProfile(DetailView):
     success_url = reverse_lazy('dashboard')
 
 
-class UpdateEmployee(UpdateView):
+class UpdateMember(UpdateView):
     fields = ('status',)
-    model = EmployeeProfile
+    model = MemberProfile
     template_name = 'event/update.html'
     success_url = reverse_lazy('dashboard')
 
 
-class UpdateEmployeeProfile(UpdateView):
+class UpdateMemberProfile(UpdateView):
     fields = ('image', 'cv',)
-    model = EmployeeProfile
+    model = MemberProfile
     template_name = 'event/update.html'
     success_url = reverse_lazy('dashboard')
 

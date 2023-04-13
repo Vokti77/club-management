@@ -15,7 +15,7 @@
         </thead>
         <tbody>
                 {% for user in users %}
-                {% if user.employeeprofile.status == '2' %}
+                {% if user.Memberprofile.status == '2' %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>{{ user.user.username }}</td>

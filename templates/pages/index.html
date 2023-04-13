@@ -26,9 +26,6 @@
 
 </div>
 
-
-<div></div>
-
 <div class="site-section">
   <div class="container">
     <div class="row mb-5 justify-content-center text-center">
@@ -47,8 +44,8 @@
           </div>
           <div class="feature-1-content">
             <h2>Personalize Learning</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit morbi hendrerit elit</p>
-            <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
+            <p>EEE club can be a great way to personalize learning and create a supportive learning community for students. By providing hands-on learning opportunities, encouraging collaboration, inviting guest speakers, and organizing competitions, the club can help students develop the skills and knowledge they need to succeed in their field of study.</p>
+            
           </div>
         </div>
       </div>
@@ -58,9 +55,9 @@
             <span class="flaticon-school-material text-white"></span>
           </div>
           <div class="feature-1-content">
-            <h2>event</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit morbi hendrerit elit</p>
-            <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
+            <h2>Organized Evens</h2>
+            <p>Organizing events can be a great way to bring people together and create memorable experiences. </p>
+          
           </div>
         </div> 
       </div>
@@ -71,8 +68,8 @@
           </div>
           <div class="feature-1-content">
             <h2>Tools for Students</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit morbi hendrerit elit</p>
-            <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
+            <p>Overall, there are many tools available to help students succeed in their studies. By using these tools effectively, students can better manage their workload, improve their learning outcomes, and succeed academically.</p>
+            
           </div>
         </div> 
       </div>
@@ -94,13 +91,14 @@
     <div class="row">
       <div class="col-12">
           <div class="owl-slide-3 owl-carousel">
+            {% for event in events %}
               <div class="course-1-item">
                 <figure class="thumnail">
-                  <a href="course-single.html"><img src="" alt="Image" class="img-fluid"></a>
-                  <div class="category"><h3></h3></div>  
+                  <a href="course-single.html"><img src="{{event.cover.url}}" alt="Image" class="img-fluid"></a>
+                  <div class="category"></div>  
                 </figure>
                 <div class="course-1-content pb-4">
-                  <h2>ing Ionic</h2>
+                  <h2>{{event.title}}</h2>
                   <div class="rating text-center mb-3">
                     <span class="icon-star2 text-warning"></span>
                     <span class="icon-star2 text-warning"></span>
@@ -108,16 +106,21 @@
                     <span class="icon-star2 text-warning"></span>
                     <span class="icon-star2 text-warning"></span>
                   </div>
-                  <p class="desc mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique accusantium ipsam.</p>
-                  <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Donate</a></p>
+                  <p class="desc mb-4">{{event.detail}}</p>
+                  {% if user.is_authenticated %}
+                  <p><a href="{% url 'donate' event.pk %}" class="btn btn-primary rounded-0 px-4">Donate</a></p>
+                    {% else%}
+                  <p><a href="{% url 'signup' %}" class="btn btn-primary rounded-0 px-4">Donate</a></p>
+                  {% endif %}
                 </div>
               </div>
+              {% endfor %}
         </div>
     </div>
 </div>
 
 <!-- // 05 - Block -->
-<div class="news-updates">
+<!-- <div class="news-updates">
   <div class="container"> 
     <div class="row">
       <div class="col-lg-9">
@@ -198,7 +201,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="site-section">
   <div class="container">

@@ -1,7 +1,7 @@
 {% extends 'dashboard/bs.html' %}
 {% load static %}
 {% block title %}
-    All Employee
+    All Member
 {% endblock %}
 {% block content %}
 <h3>Current Users</h3>
@@ -11,14 +11,14 @@
         <th scope="col">#</th>
         <th scope="col">Username</th>
         <th scope="col">Email</th>
-        <th scope="col">Employee</th>
+        <th scope="col">Member</th>
         <th scope="col">Donor</th>
         <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
     {% for user in users %}
-{% if user.employeeprofile.status == "1" %}
+{% if user.Memberprofile.status == "1" %}
         <tr>
             <th scope="row">{{ forloop.counter }}</th>
             <td>{{ user.username }}</td>
@@ -31,7 +31,7 @@
                 {% endif %}
             </td>
             <td>
-                {% if user.employeeprofile.id and user.employeeprofile.status == "1" %}
+                {% if user.Memberprofile.id and user.Memberprofile.status == "1" %}
                     Yes
                 {% else %}
                     No
@@ -55,13 +55,13 @@
         <th scope="col">Username</th>
         <th scope="col">Email</th>
         <th scope="col">Donor</th>
-        <th scope="col">Employee</th>
+        <th scope="col">Member</th>
         <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
     {% for user in users %}
-    {% if user.employeeprofile.status == "0" %}
+    {% if user.Memberprofile.status == "0" %}
     <tr>
         <th scope="row">{{ forloop.counter }}</th>
         <td>{{ user.username }}</td>
@@ -74,7 +74,7 @@
             {% endif %}
         </td>
         <td>
-            {% if user.employeeprofile.id and user.employeeprofile.status == "2" %}
+            {% if user.Memberprofile.id and user.Memberprofile.status == "2" %}
                 Requested
             {% else %}
                 Not Requested

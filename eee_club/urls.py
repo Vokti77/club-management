@@ -11,6 +11,7 @@ urlpatterns = [
     path('event/', include('event.urls')),
     path('core/', include('core.urls')),
     path('room/', include('room.urls')),
+    path('question/', include('question.urls')),
 ]
 
 if settings.DEBUG:

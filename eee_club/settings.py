@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'room',
     'crispy_forms',
     'crispy_bootstrap5',
+    'question',
     
 
 ]

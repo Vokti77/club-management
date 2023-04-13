@@ -22,7 +22,7 @@
                     </li>
 
                 {% endif %}
-                {% if request.user.employeeprofile.status == "1" %}
+                {% if request.user.Memberprofile.status == "1" %}
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'all_poor_people' %}">People List</a>
                     </li>

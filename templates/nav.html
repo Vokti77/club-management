@@ -27,13 +27,14 @@
           >
                 <a href="{% url 'about' %}" class="nav-link text-left">About Us</a>
               </li>
-              <li {% if "questions-solves/" in request.path %}
+
+              <li {% if "questions/" in request.path %}
                 class="nav-item active mr-3"
                 {% else %}
                   class="nav-item mr-3"
                {% endif %}
           >
-          <a href="{% url 'questions-solves' %}" class="nav-link text-left">Question & Solve</a>
+          <a href="{% url 'questions' %}" class="nav-link text-left">Question & Solve</a>
               </li>
 
               <li {% if "event/" in request.path %}
@@ -42,7 +43,7 @@
                   class="nav-item mr-3"
                {% endif %}
           >
-                <a href="{% url 'event' %}" class="nav-link text-left">event</a>
+                <a href="{% url 'event' %}" class="nav-link text-left">Events</a>
               </li>
               <li {% if "contact/" in request.path %}
                 class="nav-item active mr-3"

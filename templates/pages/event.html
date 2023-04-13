@@ -1,101 +1,52 @@
-{% extends 'dashboard/bs.html' %}
+{% extends 'base.html' %}
 {% block title %}
-    event
+    Events
 {% endblock %}
 {% block content %}
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('/static/images/bg_1.jpg')">
+    <div class="container">
+      <div class="row align-items-end">
+        <div class="col-lg-7">
+          <h2 class="mb-0">Events</h2>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <div class="custom-breadcrumns border-bottom">
+    <div class="container">
+      <a href="{% url 'index' %}">Home</a>
+      <span class="mx-3 icon-keyboard_arrow_right"></span>
+      <span class="current">Events</span>
+    </div>
+  </div>
+ 
+        <div class="row">
+            <div class="col-12">
+                <div class="owl-slide-3 owl-carousel">
+                  {% for event in events %}
+                    <div class="course-1-item">
+                      <figure class="thumnail">
+                        <a href="course-single.html"><img src="{{event.cover.url}}" alt="Image" class="img-fluid"></a>
+                        <div class="category"></div>  
+                      </figure>
+                      <div class="course-1-content pb-4">
+                        <h2>{{event.title}}</h2>
+                        <div class="rating text-center mb-3">
+                          <span class="icon-star2 text-warning"></span>
+                          <span class="icon-star2 text-warning"></span>
+                          <span class="icon-star2 text-warning"></span>
+                          <span class="icon-star2 text-warning"></span>
+                          <span class="icon-star2 text-warning"></span>
+                        </div>
+                        <p class="desc mb-4">{{event.detail}}</p>
+                        <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Donate</a></p>
+                      </div>
+                    </div>
+                    {% endfor %}
+              </div>
+          </div>
+      </div>
+        
 
-<div class="row">
-    <div class="col">
-        <h1>Running event</h1>
-    </div>
-        <div class="col">
-            {% if request.user.is_superuser %}
-                <a href="{% url 'create-event' %}" class="btn btn-outline-dark btn-block">Create Event</a>
-            {% endif %}
-        </div>
-    </div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Gained</th>
-            <th scope="col">Deadline</th>
-            <th scope="colgroup">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for event in event %}
-            {% if event.ready_to_distribute == 'no' %}
-            <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td><a href="{% url 'detail-event' event.pk %}"
-                       class="text-dark text-decoration-none">{{ event.title }}</a></td>
-                <td>{{ event.total }}</td>
-                <td>{{ event.gained }}</td>
-                <td>{{ event.date_created }}</td>
-                <td><a href="{% url 'detail-event' event.id %}" class="btn btn-outline-dark">Event Detail</a>
-                    {% if request.user.is_superuser %}
-                        <a href="{% url 'update-event' event.pk %}" class="btn btn-outline-dark">
-                            Update
-                        </a>
-                        <a href="{% url 'delete-event' event.pk %}" class="btn btn-outline-dark">
-                            Delete
-                        </a>
-                    {% else %}
-                        <a href="{% url 'donate' event.pk %}" class="btn btn-outline-dark">
-                            Donate
-                        </a>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endif %}
-        {% endfor %}
-        </tbody>
-    </table>
-    <br><br>
-    <div class="row">
-        <div class="col">
-            <h1>Ready to distribute assets</h1>
-        </div>
-        <div class="col">
-        </div>
-    </div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Gained</th>
-            <th scope="col">Deadline</th>
-            <th scope="colgroup">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for event in event %}
-            {% if event.ready_to_distribute == 'yes' %}
-            <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td><a href="{% url 'detail-event' event.pk %}"
-                       class="text-dark text-decoration-none">{{ event.title }}</a></td>
-                <td>{{ event.total }}</td>
-                <td>{{ event.gained }}</td>
-                <td>{{ event.date_created }}</td>
-                <td><a href="{% url 'detail-event' event.id %}" class="btn btn-outline-dark">Event Detail</a>
-                    {% if request.user.is_superuser %}
-                        <a href="{% url 'update-event' event.pk %}" class="btn btn-outline-dark">
-                            Update
-                        </a>
-                        <a href="{% url 'delete-event' event.pk %}" class="btn btn-outline-dark">
-                            Delete
-                        </a>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endif %}
-        {% endfor %}
-        </tbody>
-    </table>
-{% endblock %}
+      
+  {% endblock %}

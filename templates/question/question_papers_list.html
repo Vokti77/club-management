@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Question Papers</h2>
+  <ul>
+    {% for question_paper in question_papers %}
+      <li><a href="{% url 'download_question_paper' question_paper.pk %}">{{ question_paper.title }}</a></li>
+    {% empty %}
+      <li>No question papers available.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
