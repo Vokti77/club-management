@@ -16,10 +16,21 @@ def about(request):
     return render(request, 'pages/about.html')
 
 def event(request):
-    return render(request, 'pages/event.html')
+    events = Event.objects.all()
+    amount = list(Donate.objects.filter(isapproved='yes').aggregate(Sum('amount')).values())[0]
+    context = {
+        'events': events,
+        'amount': amount
+    }
+
+    return render(request, 'pages/event.html', context)
 
 
 def contact(request):
+    if request.method == 'POST':
+        sender_name = request.POST['sender_name']
+        sender_email = request.POST['sender_email']
+        message = request.POST['message']
     return render(request, 'pages/contact.html')
 
 def questions(request):
