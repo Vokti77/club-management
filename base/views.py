@@ -30,6 +30,10 @@ def event(request):
 
 
 def contact(request):
+    if request.method == 'POST':
+        sender_name = request.POST['sender_name']
+        sender_email = request.POST['sender_email']
+        message = request.POST['message']
     return render(request, 'pages/contact.html')
 
 def questions(request):
