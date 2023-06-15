@@ -11,14 +11,14 @@
         <th scope="col">#</th>
         <th scope="col">Username</th>
         <th scope="col">Email</th>
-        <th scope="col">Member</th>
         <th scope="col">Donor</th>
+        <th scope="col">Member</th>
         <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
     {% for user in users %}
-{% if user.Memberprofile.status == "1" %}
+    {% if user.memberprofile.status == "1" %}
         <tr>
             <th scope="row">{{ forloop.counter }}</th>
             <td>{{ user.username }}</td>
@@ -31,7 +31,7 @@
                 {% endif %}
             </td>
             <td>
-                {% if user.Memberprofile.id and user.Memberprofile.status == "1" %}
+                {% if user.memberprofile.id and user.memberprofile.status == "1" %}
                     Yes
                 {% else %}
                     No
@@ -42,7 +42,7 @@
                    class="btn btn-outline-dark btn-block">Detail</a>
             </td>
         </tr>
-        {% endif %}
+    {% endif %}
     {% endfor %}
     </tbody>
 </table>
@@ -61,7 +61,7 @@
     </thead>
     <tbody>
     {% for user in users %}
-    {% if user.Memberprofile.status == "0" %}
+    {% if user.memberprofile.status == "0" %}
     <tr>
         <th scope="row">{{ forloop.counter }}</th>
         <td>{{ user.username }}</td>
@@ -74,7 +74,7 @@
             {% endif %}
         </td>
         <td>
-            {% if user.Memberprofile.id and user.Memberprofile.status == "2" %}
+            {% if user.memberprofile.id and user.memberprofile.status == "2" %}
                 Requested
             {% else %}
                 Not Requested
@@ -85,7 +85,7 @@
                class="btn btn-outline-dark btn-block">Detail</a>
         </td>
     </tr>
-    {% endif %}
+   {% endif %}
     {% endfor %}
     </tbody>
 </table>

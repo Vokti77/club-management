@@ -22,7 +22,8 @@
                     </li>
 
                 {% endif %}
-                {% if request.user.Memberprofile.status == "1" %}
+                
+                {% if request.user.memberprofile.status == "1" %}
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'all_poor_people' %}">People List</a>
                     </li>
@@ -31,7 +32,7 @@
                     </li>
                     {% endif %}
             </ul>
-            <a class="btn btn-outline-dark" href="{% url 'logout' %}" id="nav-link">Logout</a>
+            <a class="btn btn-outline-dark" href="{% url 'logout' %}" id="nav-link">Logout</a><a class="btn btn-outline-dark" href="{% url 'index' %}" id="nav-link">Home</a>
         </div>
 
     </div>

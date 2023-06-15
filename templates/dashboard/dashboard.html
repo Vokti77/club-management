@@ -37,7 +37,7 @@
         <br>
         <div class="card text-center">
             <div class="card-header">
-{#                <h3>Donor Account</h3>#}
+             <h3>Donor Account</h3>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
@@ -63,7 +63,7 @@
                             </td>
                         </tr>
                     {% else %}
-{#                        <a href="{% url 'donor_profile' %}" class="btn btn-outline-dark">Become A Donor</a>#}
+                 <a href="{% url 'donor_profile' %}" class="btn btn-outline-dark">Become A Donor</a>
                     {% endif %}
                     </tbody>
                 </table>
@@ -77,12 +77,12 @@
             <div class="card-body">
                 <table class="table table-bordered">
                     <tbody>
-                    {% if request.user.Memberprofile.id %}
+                    {% if request.user.memberprofile.id %}
                         <tr>
                             <th>Profile Picture</th>
                             <td>
-                                {% if request.user.Memberprofile.id %}
-                                    <img src="{{ request.user.Memberprofile.image.url }}" alt="user-image"
+                                {% if request.user.memberprofile.id %}
+                                    <img src="{{ request.user.memberprofile.image.url }}" alt="user-image"
                                          width="100px">
                                 {% else %}
                                     <img src="{% static 'assets\images\person-dummy.jpg' %}" width="100px">
@@ -92,16 +92,16 @@
                         <tr>
                             <th>CV</th>
                             <td>
-                                {% if request.user.Memberprofile.id %}
-                                    <a href="{{ request.user.Memberprofile.cv.url }}" download
+                                {% if request.user.memberprofile.id %}
+                                    <a href="{{ request.user.memberprofile.cv.url }}" download
                                        class="btn btn-outline-dark">Download CV</a>
                                 {% endif %}
                             </td>
                         </tr>
                         <tr>
                             <th>Status</th>
-                            <td>{% if  request.user.Memberprofile.status == "2" %}
-                                <p>Pending</p>
+                            <td>{% if  request.user.memberprofile.status == "2" %}
+                                <p>
                             {% else %}
                                 <p>Approved</p>
                             {% endif %}</td>
@@ -109,12 +109,12 @@
                         <tr>
                             <th scope="row">Actions</th>
                             <td>
-                                <a href="{% url 'update_Member_profile' request.user.Memberprofile.id %}"
+                                <a href="{% url 'update-member-profile' request.user.memberprofile.id %}"
                                    class="btn btn-outline-dark">Update Account</a>
                             </td>
                         </tr>
                     {% else %}
-                        <a href="{% url 'Member_profile' %}" class="btn btn-outline-dark">Become
+                        <a href="{% url 'member_profile' %}" class="btn btn-outline-dark">Become
                             Membership</a>
                     {% endif %}
                     </tbody>

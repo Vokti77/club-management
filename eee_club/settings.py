@@ -144,5 +144,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGOUT_REDIRECT_URL = 'index'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = '/login/'
+
+
+# mail sending
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'brur.eeeclub5404@gmail.com'
+EMAIL_HOST_PASSWORD = '************'
+EMAIL_USE_TLS = True

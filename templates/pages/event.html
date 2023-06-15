@@ -11,22 +11,23 @@
         </div>
       </div>
     </div>
-  </div> 
-  <div class="custom-breadcrumns border-bottom">
-    <div class="container">
-      <a href="{% url 'index' %}">Home</a>
-      <span class="mx-3 icon-keyboard_arrow_right"></span>
-      <span class="current">Events</span>
-    </div>
+</div> 
+<div class="custom-breadcrumns border-bottom">
+  <div class="container">
+    <a href="{% url 'index' %}">Home</a>
+    <span class="mx-3 icon-keyboard_arrow_right"></span>
+    <span class="current">Events</span>
   </div>
- 
+</div>
+<div class="site-section">
+  <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="owl-slide-3 owl-carousel">
                   {% for event in events %}
                     <div class="course-1-item">
                       <figure class="thumnail">
-                        <a href="course-single.html"><img src="{{event.cover.url}}" alt="Image" class="img-fluid"></a>
+                        <a href="#"><img src="{{event.cover.url}}" alt="Image" class="img-fluid"></a>
                         <div class="category"></div>  
                       </figure>
                       <div class="course-1-content pb-4">
@@ -39,14 +40,16 @@
                           <span class="icon-star2 text-warning"></span>
                         </div>
                         <p class="desc mb-4">{{event.detail}}</p>
-                        <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Donate</a></p>
+                        {% if user.is_authenticated %}
+                        <p><a href="{% url 'donate' event.pk %}" class="btn btn-primary rounded-0 px-4">Donate</a></p>
+                          {% else%}
+                        <p><a href="{% url 'signup' %}" class="btn btn-primary rounded-0 px-4">Donate</a></p>
+                        {% endif %}
                       </div>
                     </div>
-                    {% endfor %}
-              </div>
-          </div>
-      </div>
-        
-
-      
-  {% endblock %}
+              {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>     
+{% endblock %}

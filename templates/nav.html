@@ -53,8 +53,9 @@
           >
                   <a href="{% url 'contact' %}" class="nav-link text-left">Contact</a>
                 </li>
+
                 {% if request.user.is_authenticated %}
-                <li {% if "rooms/" in request.path %}
+                <li {% if "rooms" in request.path %}
                 class="nav-item active mr-3"
                 {% else %}
                   class="nav-item mr-3"
@@ -63,10 +64,16 @@
                   <a href="{% url 'rooms' %}" class="nav-link text-left">Chat</a>
                 </li>
                 {% endif %}
+
+                <li class="nav-item  mr-3">
+                <a href="{% url 'dashboard' %}" class="nav-link text-left">Dashboard</a>
+              </li>
             </ul>                                                                                                                                                                                                                                                                                          </ul>
           </nav>
-
         </div>
+
+  
+
         <div class="ml-auto">
           <div class="social-wrap">
             <a href="#"><span class="icon-facebook"></span></a>

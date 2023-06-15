@@ -14,14 +14,7 @@
                         <th scope="row">Username</th>
                         <td> {{ user.username }}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">First Name</th>
-                        <td>{{ user.first_name }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Last Name</th>
-                        <td>{{ user.last_name }}</td>
-                    </tr>
+                  
                     <tr>
                         <th scope="row">Email</th>
                         <td><a href="mailto:{{ user.email }}" class="btn btn-outline-dark">{{ user.email }}</a></td>
@@ -49,23 +42,23 @@
                     <tr>
                         <th scope="row">Member</th>
                         <td>
-                            {% if user.Memberprofile.status == "2" %}
-                                <a href="{% url 'update_Member' user.Memberprofile.id %}" class="btn btn-outline-dark">Pending</a>
+                            {% if user.memberprofile.status == "2" %}
+                                <a href="{% url 'update-member' user.memberprofile.id %}" class="btn btn-outline-dark">Pending</a>
                             {% else %}
-                                <a href="{% url 'update_Member' user.Memberprofile.id %}" class="btn btn-outline-dark">Approved</a>
+                                <a href="{% url 'update-member' user.memberprofile.id %}" class="btn btn-outline-dark">Approved</a>
                             {% endif %}
                         </td>
                     </tr>
-                    {% if user.Memberprofile.id %}
+                    {% if user.memberprofile.id %}
                         <tr>
                             <th scope="row">Member CV</th>
-                            <td><a href="{{ user.Memberprofile.cv.url }}" class="btn btn-outline-dark" Download>Download
+                            <td><a href="{{ user.memberprofile.cv.url }}" class="btn btn-outline-dark" Download>Download
                                 CV</a></td>
                         </tr>
                         <tr>
                         <th scope="row">Image As an Member</th>
                         <th>{% if user.Memberprofile.image %}
-                            <img src="{{ user.Memberprofile.image.url }}" alt="user-image" width="100px">
+                            <img src="{{ user.memberprofile.image.url }}" alt="user-image" width="100px">
                         {% else %}
                             <img src="{% static 'assets\images\person-dummy.jpg' %}" width="100px">
                         {% endif %}</th>
@@ -87,7 +80,7 @@
             </div>
             <div class="card-footer ">
                 {% if request.user.is_superuser %}
-                    <a href="{% url 'update_Member' user.Memberprofile.id %}" class="btn btn-outline-dark">Update
+                    <a href="{% url 'update-member-profile' user.memberprofile.id %}" class="btn btn-outline-dark">Update
                         User</a>
                 {% else %}
                     <a href="{% url 'profile' %}" class="btn btn-outline-dark">Update Profile</a>

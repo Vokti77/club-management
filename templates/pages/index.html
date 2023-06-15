@@ -94,7 +94,7 @@
             {% for event in events %}
               <div class="course-1-item">
                 <figure class="thumnail">
-                  <a href="course-single.html"><img src="{{event.cover.url}}" alt="Image" class="img-fluid"></a>
+                  <a href="{% url 'event' %}"><img src="{{event.cover.url}}" alt="Image" class="img-fluid"></a>
                   <div class="category"></div>  
                 </figure>
                 <div class="course-1-content pb-4">

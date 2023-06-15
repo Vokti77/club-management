@@ -173,13 +173,14 @@ class DistributionDetail(DetailView):
 def contact_form(request):
     if request.method == "GET":
         form = ContactForm()
-        return render(request, 'form.html', {'form': form})
+        return render(request, 'pages/contact.html', {'form': form})
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
-            from_mail = form.cleaned_data['from_email']
+            f_name = form.cleaned_data['fname']
+            from_mail = form.cleaned_data['email']
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             email_list = form.cleaned_data['email_list']
             send_mail(subject, message, from_mail, [email_list])
-            return render(request, 'form.html', {'form': form})
+            return render(request, 'pages/contact.html', {'form': form})

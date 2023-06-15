@@ -6,19 +6,20 @@ from django.utils.decorators import method_decorator
 from django.views.generic import UpdateView, DetailView, ListView, CreateView
 from .forms import SignUpForm, DonorProfileForm, MemberProfileForm
 from .models import MemberProfile, DonorProfile
-
+from django.contrib.auth import login
 
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
+
         if form.is_valid():
             user = form.save()
             user.save()
             return redirect('login')
     else:
         form = SignUpForm()
-    return render(request, 'accounts/register.html', {'form': form})
-
+    
+    return render(request, 'accounts/signup.html', {'form': form})
 
 @login_required(login_url='login')
 def dashboard(request):
@@ -87,19 +88,19 @@ class UserProfile(DetailView):
 class UpdateMember(UpdateView):
     fields = ('status',)
     model = MemberProfile
-    template_name = 'event/update.html'
+    template_name = 'events/update.html'
     success_url = reverse_lazy('dashboard')
 
 
 class UpdateMemberProfile(UpdateView):
-    fields = ('image', 'cv',)
+    fields = ('name', 'email', 'contact', 'address', 'department', 'image', 'batch','cv',)
     model = MemberProfile
-    template_name = 'event/update.html'
+    template_name = 'events/update.html'
     success_url = reverse_lazy('dashboard')
 
 
 class UpdateDonorProfile(UpdateView):
-    fields = ('image',)
+    fields = ('name', 'email', 'contact', 'address', 'image', 'blood')
     model = DonorProfile
-    template_name = 'event/update.html'
+    template_name = 'events/update.html'
     success_url = reverse_lazy('dashboard')
