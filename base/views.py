@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from question.models import QuestionPaper, Solution
+from django.contrib.auth.models import User
 from event.models import Event, Donate
+from account.models import MemberProfile, DonorProfile
+from django.views.generic import UpdateView, DetailView, ListView, CreateView
 from account.models import MemberProfile, DonorProfile
 from django.db.models import Sum
 from room.models import Room, Message
@@ -46,3 +49,8 @@ def questions(request):
     }
 
     return render(request, 'pages/qs.html' , context)
+
+# class UserProfile(DetailView):
+#     context_object_name = 'user'
+#     model = User
+#     template_name = 'nav.html'

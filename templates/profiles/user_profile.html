@@ -57,7 +57,7 @@
                         </tr>
                         <tr>
                         <th scope="row">Image As an Member</th>
-                        <th>{% if user.Memberprofile.image %}
+                        <th>{% if user.memberprofile.image %}
                             <img src="{{ user.memberprofile.image.url }}" alt="user-image" width="100px">
                         {% else %}
                             <img src="{% static 'assets\images\person-dummy.jpg' %}" width="100px">
