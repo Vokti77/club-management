@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Contact |{% endblock  %}
 {% block content %}   
 
 <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('/static/images/bg_1.jpg')">
@@ -19,29 +18,39 @@
     <span class="current">Contact</span>
   </div>
 </div>
+
+{% if sender_name %}
+
+<center>
+  <h2> Thanks {{sender_name}}!</h2>
+  <p>We received your email and will respond shortly...</p>
+</center>
+
+{% else %}
+
 <form method="post" action="">
 {% csrf_token %}
   <div class="site-section">
     <div class="container">
         <div class="row">
             <div class="col-md-6 form-group">
-                <label for="fname">First Name</label>
-                <input name="fname" type="text" id="fname" class="form-control form-control-lg">
+                <label for="fname">Name</label>
+                <input name="name" type="text" id="fname" class="form-control form-control-lg">
             </div>
-            <div class="col-md-6 form-group">
+            <!-- <div class="col-md-6 form-group">
                 <label for="lname">Last Name</label>
                 <input name="lname" type="text" id="lname" class="form-control form-control-lg">
-            </div>
+            </div> -->
         </div>
         <div class="row">
             <div class="col-md-6 form-group">
                 <label for="eaddress">Email Address</label>
                 <input name="email" type="text" id="eaddress" class="form-control form-control-lg">
             </div>
-            <div class="col-md-6 form-group">
+            <!-- <div class="col-md-6 form-group">
                 <label for="sub">Subject</label>
                 <input name="subject" type="text" id="tel" class="form-control form-control-lg">
-            </div>
+            </div> -->
         </div>
         <div class="row">
             <div class="col-md-12 form-group">
@@ -66,4 +75,6 @@
     </div>
   </div>
 </form>
+{% endif %}
+
 {% endblock %}  

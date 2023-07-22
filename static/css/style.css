@@ -929,7 +929,7 @@ h1, h2, h3, h4, h5,
       font-size: 15px; }
 
 .footer {
-  padding: 4rem 0;
+  /* padding: 4rem 0; */
   background: #183661;
   font-size: 14px;
   color: #fff; }

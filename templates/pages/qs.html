@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Question & Solves |{% endblock  %}
+
 {% block content %}   
 
 <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('/static/images/bg_1.jpg')">
@@ -19,32 +19,38 @@
     <span class="current">Question & Solves</span>
   </div>
 </div>
-<div class="news-updates">
-  <div class="container"> 
-    <div class="row">
-      <div class="col-lg-9">
-          <div class="section-heading">
-          <h2 class="text-black">Question &amp; Solves</h2>
-          
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
+<br>
+<a href="{% url 'upload_question_paper'%}" class="btn btn-primary">Add Questions </a>
+<br>
+<br>
+<table class="table table-dark table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Questions</th>
+      <th scope="col">Solutions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="col">
+        
               {% for q in questions%}
-              <h2>{{ q.title }}<a href="{% url 'download_question_paper' q.id %}" class="mdi mdi-file-pdf-box"></a></h2><span ></span>
-              <p>{{ q.description }}</p><a href="{% url 'upload_solution' q.id %}">Add Solve </a>
+              <h4>{{ q.title }}<a href="{% url 'download_question_paper' q.id %}" class="mdi mdi-file-pdf-box"></a></h4>
+              <a href="{% url 'upload_solution' q.id %}" class="mdi mdi-file-pdf-box">Add Solve </a>
               {% endfor %}
-              <div>
-              {% for s in solutions %}
-              <h2>{{ user.username }}'s Solution</h2>
-              <p>{{ s.description }}</p>
-              <a href="{% url 'download_solution' s.id %}" class="btn btn-primary">Download</a>
-              {% endfor %}
-            </div>
-            </div>
-          </div>
-    </div>
-  </div>
-</div>
+        
+      </td>
+      <td scope="col">
+      
+            {% for s in solutions %}
+            <a href="{% url 'download_solution' s.id %}" class="btn btn-primary">Download</a>
+            {% endfor %}
+      
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 
 {% endblock %}  

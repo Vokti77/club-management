@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from question.models import QuestionPaper, Solution
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from event.models import Event, Donate
 from account.models import MemberProfile, DonorProfile
@@ -31,14 +32,6 @@ def event(request):
     }
     return render(request, 'pages/event.html', context)
 
-
-def contact(request):
-    if request.method == 'POST':
-        sender_name = request.POST['sender_name']
-        sender_email = request.POST['sender_email']
-        message = request.POST['message']
-    return render(request, 'pages/contact.html')
-
 def questions(request):
     questions = QuestionPaper.objects.all()
     solutions = Solution.objects.all()
@@ -50,7 +43,30 @@ def questions(request):
 
     return render(request, 'pages/qs.html' , context)
 
-# class UserProfile(DetailView):
-#     context_object_name = 'user'
-#     model = User
-#     template_name = 'nav.html'
+def gallery(request):
+    return render(request, 'pages/gallery.html')
+
+
+
+def contact(request):
+    if request.method == 'POST':
+        sender_name = request.POST['name']
+        sender_email = request.POST['email']
+        message = request.POST['message']
+
+        send_mail (
+            sender_name,
+            sender_email,
+            message,
+            ['vokti77@gmail.com']
+        )
+        context = {
+            'sender_name': sender_name,
+            'sender_email': sender_email,
+            'message': message
+
+        }
+        return render(request, 'pages/contact.html', context)
+    return render(request, 'pages/contact.html', {})
+
+
