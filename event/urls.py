@@ -5,7 +5,7 @@ from .views import UpdateEvent, DeleteEvent, CreateEvent, AllDonations, UpdateDo
     AddPeople, UpdatePeople, DeletePeople, DetailPeople, DistributionList, distribute, DistributionDetail, detail_event
 
 urlpatterns = [
-    path('', views.event, name="event"),
+    path('', views.events, name="events"),
     path('donate/<pk>', views.donation, name="donate"),
     path('my-donations/', views.my_donations, name="my-donations"),
     path('all-donations/', AllDonations.as_view(), name="all-donations"),

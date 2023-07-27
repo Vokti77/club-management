@@ -38,13 +38,13 @@
           <a href="{% url 'questions' %}" class="nav-link text-left">Question & Solve</a>
               </li>
 
-              <li {% if "event/" in request.path %}
+              <li {% if "initiative/" in request.path %}
                 class="nav-item active mr-3"
                 {% else %}
                   class="nav-item mr-3"
                {% endif %}
           >
-                <a href="{% url 'event' %}" class="nav-link text-left">Events</a>
+                <a href="{% url 'initiative' %}" class="nav-link text-left">Events</a>
               </li>
 
               <li {% if "gallery/" in request.path %}

@@ -9,17 +9,33 @@ from django.views.generic import UpdateView, DeleteView, CreateView, DetailView,
 
 from . import models
 from .forms import DonationForm, AddPeopleForm, CreateEventForm, DistributionForm, ContactForm
-from .models import Event, Donate, Person, AssetDistribution
+from event.models import Event, Donate, Person, AssetDistribution
 
-
-def event(request):
+def events(request):
     event = Event.objects.all()
     amount = list(Donate.objects.filter(isapproved='yes').aggregate(Sum('amount')).values())[0]
     context = {
-        'event': event,
+        'events': event,
         'amount': amount
     }
     return render(request, 'events/events.html', context)
+
+
+# def events(request):
+#     qs = Event.objects.all()
+#     print('------------------------------')
+#     print(qs)
+#     print('------------------------------')
+#     amount = list(Donate.objects.filter(isapproved='yes').aggregate(Sum('amount')).values())[0]
+#     context = {
+#         'qs': qs,
+#         'amount': amount
+#     }
+
+#     print('------------------------------')
+#     print(qs)
+#     print('------------------------------')
+#     return render(request, 'events/events.html', context)
 
 
 def donation(request, pk):

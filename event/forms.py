@@ -1,7 +1,12 @@
 from django.forms import ModelForm
 from django import forms
 from .models import Donate, Event, Person, AssetDistribution
+from django.forms.widgets import DateInput
+from django.forms import DateInput
 
+
+class DateInput(DateInput):
+    input_type = 'date'
 
 class DonationForm(ModelForm):
     class Meta:
@@ -16,6 +21,7 @@ class AddPeopleForm(ModelForm):
 
 
 class CreateEventForm(forms.ModelForm):
+    deadline = forms.DateField(widget=DateInput)
     class Meta:
         model = Event
         fields = ['title', 'cover', 'detail', 'place', 'total', 'deadline']

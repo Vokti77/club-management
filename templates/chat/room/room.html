@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}{{ room.name }} | {% endblock %}
 
@@ -25,17 +26,22 @@
 <div class="p-10 lg:p-20 text-center">
     <h1 class="text-3xl lg:text-6xl text-white">{{ room.name }}</h1>
 </div>
-
-<div class="lg:w-2/4 mx-4 lg:mx-auto p-4 bg-white rounded-xl">
-    {% for m in messages %}
-    <div class="chat-messages space-y-3 rounded-xl bg-gray-300	" id="chat-messages">
-        
-        {{ m.user.name }}
-        : {{ m.content }}<br>
-
-    </div>
-    <br>
-    {% endfor %}
+<div class="position-relative">
+	{% for m in messages %}
+	<div class="chat-messages p-4">
+		<div class="chat-message-right pb-4">
+			<div>
+				<h3>{{ m.user.name }}</h3>
+				<img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+				<div class="text-muted small text-nowrap mt-2">{{ m.date_added }}</div>
+			</div>
+			<div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+				<div class="font-weight-bold mb-1">{{ m.user.name }}</div>
+				{{ m.content }}
+			</div>
+		</div>
+	</div>
+	{% endfor %}
 </div>
 
 <div class="lg:w-2/4 mt-6 mx-4 lg:mx-auto p-4 bg-white rounded-xl">
@@ -43,138 +49,59 @@
         <input type="text" name="content" class="flex-1 mr-3" placeholder="Your message..." id="chat-message-input">
 
         <button 
-            class="px-5 py-3 rounded-xl text-white bg-teal-600 hover:bg-teal-700"
+            class="btn btn-primary"
             id="chat-message-submit"
         >Send</button>
     </form>
 </div>
-=======================================================
-<div id="main-wrapper">
-       
-    <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Chat Option</h4>
-                    <div class="ml-auto text-right">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Library</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
-        <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- Start Page Content -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Chat Option</h4>
-                            <div class="chat-box scrollable" style="height:475px;">
-                                <!--chat Row -->
-                                <ul class="chat-list">
-                                    <!--chat Row -->
-                                    <li class="chat-item">
-                                        <div class="chat-img"><img src="assets/images/users/1.jpg" alt="user"></div>
-                                        <div class="chat-content">
-                                            <h6 class="font-medium">James Anderson</h6>
-                                            <div class="box bg-light-info">Lorem Ipsum is simply dummy text of the printing &amp; type setting industry.</div>
-                                        </div>
-                                        <div class="chat-time">10:56 am</div>
-                                    </li>
-                                    <!--chat Row -->
-                                    <li class="chat-item">
-                                        <div class="chat-img"><img src="assets/images/users/2.jpg" alt="user"></div>
-                                        <div class="chat-content">
-                                            <h6 class="font-medium">Bianca Doe</h6>
-                                            <div class="box bg-light-info">It’s Great opportunity to work.</div>
-                                        </div>
-                                        <div class="chat-time">10:57 am</div>
-                                    </li>
-                                    <!--chat Row -->
-                                    <li class="odd chat-item">
-                                        <div class="chat-content">
-                                            <div class="box bg-light-inverse">I would love to join the team.</div>
-                                            <br>
-                                        </div>
-                                    </li>
-                                    <!--chat Row -->
-                                    <li class="odd chat-item">
-                                        <div class="chat-content">
-                                            <div class="box bg-light-inverse">Whats budget of the new project.</div>
-                                            <br>
-                                        </div>
-                                        <div class="chat-time">10:59 am</div>
-                                    </li>
-                                    <!--chat Row -->
-                                    <li class="chat-item">
-                                        <div class="chat-img"><img src="assets/images/users/3.jpg" alt="user"></div>
-                                        <div class="chat-content">
-                                            <h6 class="font-medium">Angelina Rhodes</h6>
-                                            <div class="box bg-light-info">Well we have good budget for the project</div>
-                                        </div>
-                                        <div class="chat-time">11:00 am</div>
-                                    </li>
-                                    <!--chat Row -->
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-body border-top">
-                            <div class="row">
-                                <div class="col-9">
-                                    <div class="input-field m-t-0 m-b-0">
-                                        <textarea id="textarea1" placeholder="Type and enter" class="form-control border-0"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <a class="btn-circle btn-lg btn-cyan float-right text-white" href="javascript:void(0)"><i class="fas fa-paper-plane"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Right sidebar -->
-            <!-- ============================================================== -->
-            <!-- .right-sidebar -->
-            <!-- ============================================================== -->
-            <!-- End Right sidebar -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer text-center">
-            All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
-    </div>
 
-</div>
+<style>
+    body{margin-top:20px;}
+
+.chat-online {
+    color: #34ce57
+}
+
+.chat-offline {
+    color: #e4606d
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    overflow-y: scroll
+}
+
+.chat-message-left,
+.chat-message-right {
+    display: flex;
+    flex-shrink: 0
+}
+
+.chat-message-left {
+    margin-right: auto
+}
+
+.chat-message-right {
+    flex-direction: row-reverse;
+    margin-left: auto
+}
+.py-3 {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
+.px-4 {
+    padding-right: 1.5rem!important;
+    padding-left: 1.5rem!important;
+}
+.flex-grow-0 {
+    flex-grow: 0!important;
+}
+.border-top {
+    border-top: 1px solid #dee2e6!important;
+}
+</style>
 
 {% endblock %}
 

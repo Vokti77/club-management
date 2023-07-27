@@ -8,9 +8,13 @@ from django.views.generic import UpdateView, DetailView, ListView, CreateView
 from account.models import MemberProfile, DonorProfile
 from django.db.models import Sum
 from room.models import Room, Message
+from django.conf import settings
 
 def index(request):
     events = Event.objects.all()
+    # print("************************")
+    # print(events)
+    # print("************************")
     amount = list(Donate.objects.filter(isapproved='yes').aggregate(Sum('amount')).values())[0]
     context = {
         'events': events,
@@ -24,13 +28,19 @@ def about(request):
     return render(request, 'pages/about.html', {'members':members})
 
 def event(request):
+   
+    return render(request, 'events/events.html')
+
+def initiative(request):
     events = Event.objects.all()
+   
     amount = list(Donate.objects.filter(isapproved='yes').aggregate(Sum('amount')).values())[0]
     context = {
         'events': events,
         'amount': amount
     }
-    return render(request, 'pages/event.html', context)
+    return render(request, 'pages/initiative.html', context)
+
 
 def questions(request):
     questions = QuestionPaper.objects.all()
@@ -55,11 +65,9 @@ def contact(request):
         message = request.POST['message']
 
         send_mail (
-            sender_name,
-            sender_email,
-            message,
-            ['vokti77@gmail.com']
+            sender_name, sender_email, message, settings.EMAIL_HOST_USER, [sender_email],
         )
+        
         context = {
             'sender_name': sender_name,
             'sender_email': sender_email,

@@ -75,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'eee_club.wsgi.application'
+WSGI_APPLICATION = 'eee_club.wsgi.application'
 
 
 CHANNEL_LAYERS = {
