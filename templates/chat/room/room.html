@@ -32,12 +32,22 @@
 		<div class="chat-message-right pb-4">
 			<div>
 				<h3>{{ m.user.name }}</h3>
-				<img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                {% if user.is_superuser %}
+                <img src="static/images/Vokti.jpg" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                {% else %}
+                  {% if user.donorprofile.image %}
+                  <img src="{{ user.donorprofile.image.url }}" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                  {% else %}
+                  <img src="{{ user.memberprofile.image.url }}" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                  {% endif %}
+                {% endif %}
+				<!-- <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40"> -->
 				<div class="text-muted small text-nowrap mt-2">{{ m.date_added }}</div>
 			</div>
+          
 			<div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
 				<div class="font-weight-bold mb-1">{{ m.user.name }}</div>
-				{{ m.content }}
+				{{ m.user.username }} : {{ m.content }}
 			</div>
 		</div>
 	</div>

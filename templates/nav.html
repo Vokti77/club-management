@@ -64,7 +64,7 @@
           >
                   <a href="{% url 'contact' %}" class="nav-link text-left">Contact</a>
                 </li>
-
+<!-- 
                 {% if request.user.is_authenticated %}
                 <li {% if "rooms" in request.path %}
                 class="nav-item active mr-3"
@@ -74,7 +74,7 @@
           >
                   <a href="{% url 'rooms' %}" class="nav-link text-left">Chat</a>
                 </li>
-                {% endif %}
+                {% endif %} -->
 <!-- 
                 <li class="nav-item  mr-3">
                 <a href="{% url 'dashboard' %}" class="nav-link text-left">Dashboard</a>
@@ -103,7 +103,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                       <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
-                      <a class="dropdown-item" href="#">Edit Profile</a>
+                      <a class="dropdown-item" href="{% url 'rooms' %}">Chat</a>
                       <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
                     </div>
                   </li>   

@@ -19,6 +19,18 @@
   </div>
 </div>
 
+<!-- <div class="site-section">
+  <div class="container">
+      <div class="row">
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+</div> -->
+
 {% if sender_name %}
 
 <center>
@@ -37,20 +49,16 @@
                 <label for="fname">Name</label>
                 <input name="name" type="text" id="fname" class="form-control form-control-lg">
             </div>
-            <!-- <div class="col-md-6 form-group">
-                <label for="lname">Last Name</label>
-                <input name="lname" type="text" id="lname" class="form-control form-control-lg">
-            </div> -->
         </div>
         <div class="row">
             <div class="col-md-6 form-group">
                 <label for="eaddress">Email Address</label>
                 <input name="email" type="text" id="eaddress" class="form-control form-control-lg">
             </div>
-            <!-- <div class="col-md-6 form-group">
+            <div class="col-md-6 form-group">
                 <label for="sub">Subject</label>
                 <input name="subject" type="text" id="tel" class="form-control form-control-lg">
-            </div> -->
+            </div>
         </div>
         <div class="row">
             <div class="col-md-12 form-group">

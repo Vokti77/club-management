@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from question.models import QuestionPaper, Solution
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
@@ -62,12 +62,18 @@ def contact(request):
     if request.method == 'POST':
         sender_name = request.POST['name']
         sender_email = request.POST['email']
+        subject = request.POST['subject']
         message = request.POST['message']
 
-        send_mail (
-            sender_name, sender_email, message, settings.EMAIL_HOST_USER, [sender_email],
-        )
-        
+                # Send an email to the host email account
+        host_email = 'vokti77@gmail.com'  # Replace with your host email account
+        send_mail(f"{sender_name} - {subject}", f"From: {sender_name} <{sender_email}>\n\n{message}", sender_email, [host_email])
+
+
+        user_subject = "Thank you for your interest in EEE Club!"
+        user_message = f"Hello {sender_name},\n\nThank you for your interest in EEE Club! We have received your email. We will review your email and get back to you soon.\n\nWe hope you have a good day! \n\n\n\n\nBest regards, \n\nEEEclub Team"
+        send_mail(user_subject, user_message, host_email, [sender_email])
+    
         context = {
             'sender_name': sender_name,
             'sender_email': sender_email,
@@ -78,3 +84,36 @@ def contact(request):
     return render(request, 'pages/contact.html', {})
 
 
+# from .forms import ContactForm
+# from .models import ContactMessage
+
+# def contact(request):
+#     if request.method == 'POST':
+#         form = ContactForm(request.POST)
+#         if form.is_valid():
+#             name = form.cleaned_data['name']
+#             email = form.cleaned_data['email']
+#             subject = form.cleaned_data['subject']
+#             message = form.cleaned_data['message']
+
+#             # Save the message to the database
+#             contact_message = ContactMessage(name=name, email=email, subject=subject, message=message)
+#             contact_message.save()
+
+#             # Send an email to the host email account
+#             host_email = 'vokti77@gmail.com'  # Replace with your host email account
+#             send_mail(f"{name} - {subject}", f"From: {name} <{email}>\n\n{message}", email, [host_email])
+
+
+#             user_subject = "Thank you {name} for contacting us"
+#             user_message = "Thank you for your message. We will get back to you soon."
+#             send_mail(user_subject, user_message, host_email, [email])
+
+#             return redirect('contact_success')  # Redirect to a success page after successful submission
+#     else:
+#         form = ContactForm()
+
+#     return render(request, 'pages/contact.html', {'form': form})
+
+def contact_success(request):
+    return render(request, 'pages/contact_success.html')
